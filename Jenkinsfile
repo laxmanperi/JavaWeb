@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'docker container ls '
+                sh 'sudo docker container ls '
             }
         }
         stage('Test') {
