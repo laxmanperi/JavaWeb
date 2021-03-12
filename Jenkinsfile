@@ -2,20 +2,28 @@ pipeline {
     agent any
 
     stages {
+         stage('PrecheckInfra') {
+            steps {
+                echo 'Terraform apply'
+                //sh 'sudo docker build -t laxman/webapp . '
+            }
+        }
+         stage('Pre check environment') {
+            steps {
+                echo 'Ansible'
+                //sh 'sudo docker build -t laxman/webapp . '
+            }
+        }
         stage('Build') {
             steps {
                 echo 'Building..'
                 sh 'sudo docker build -t laxman/webapp . '
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
+    
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                echo 'kubectl apply -f '
             }
         }
     }
